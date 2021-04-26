@@ -139,16 +139,16 @@ class DigitClassificationModel(object):
     def __init__(self):
         # Initialize your model parameters here
         "*** YOUR CODE HERE ***"
-        self.learning_rate = 0.128
-        self.accuracy = 0.975
+        self.learning_rate = 0.28
+        self.accuracy = 0.9728
         self.batch_size = 250
-        self.m1 = nn.Parameter(784, 150)
-        self.m2 = nn.Parameter(150, 100)
-        self.m3 = nn.Parameter(100, 50)
-        self.m4 = nn.Parameter(50, 10)
-        self.b1 = nn.Parameter(1, 150)
-        self.b2 = nn.Parameter(1, 100)
-        self.b3 = nn.Parameter(1, 50)
+        self.m1 = nn.Parameter(784, 140)
+        self.m2 = nn.Parameter(140, 70)
+        self.m3 = nn.Parameter(70, 35)
+        self.m4 = nn.Parameter(35, 10)
+        self.b1 = nn.Parameter(1, 140)
+        self.b2 = nn.Parameter(1, 70)
+        self.b3 = nn.Parameter(1, 35)
         self.b4 = nn.Parameter(1, 10)
 
     def run(self, x):
@@ -203,7 +203,7 @@ class DigitClassificationModel(object):
                 self.b3.update(grads[5], -self.learning_rate)
                 self.m4.update(grads[6], -self.learning_rate)
                 self.b4.update(grads[7], -self.learning_rate)
-            if dataset.get_validation_accuracy() > self.accuracy:
+            if dataset.get_validation_accuracy() >= self.accuracy:
                 break
 
 
